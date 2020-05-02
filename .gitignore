@@ -2,4 +2,5 @@
 *.yy.c
 
 *.output
-src/bin/
+src/bin/*
+!src/bin/.keep
