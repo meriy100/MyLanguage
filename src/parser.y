@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include "node.h"
 #define YYDEBUG 1
 %}
 %union {
@@ -20,6 +21,7 @@ line_list
 line
   : expression CR
   {
+      print_test();
       printf(">>%lf\n", $1);
   }
 expression
@@ -46,6 +48,10 @@ term
   ;
 primary_expression
   : DOUBLE_LITERAL
+  {
+        node_print(node_float_new($1));
+        $$ = $1;
+  }
   ;
 
 %%
