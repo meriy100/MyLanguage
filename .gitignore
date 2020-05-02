@@ -2,3 +2,4 @@
 *.yy.c
 
 *.output
+src/bin/
