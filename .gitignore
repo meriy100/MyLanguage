@@ -4,3 +4,5 @@
 *.output
 src/bin/*
 !src/bin/.keep
+
+*.o
