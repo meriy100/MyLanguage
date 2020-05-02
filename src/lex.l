@@ -8,6 +8,8 @@ yywrap(void)
     return 1;
 }
 %}
+
+%option yylineno
 %%
 
 "+"		return ADD;

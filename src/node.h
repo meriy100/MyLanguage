@@ -3,6 +3,16 @@
 
 void print_test();
 
+typedef struct parser_state {
+  int nerr;
+  void *lval;
+  const char *fname;
+  int lineno;
+  int tline;
+} parser_state;
+
+void node_parse_init(parser_state*);
+
 typedef enum {
     NODE_FLOAT,
 } node_type;

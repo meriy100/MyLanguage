@@ -9,8 +9,8 @@ lex.yy.c : parser.tab.h
 
 node.o :
 
-bin/exe : parser.tab.c lex.yy.c node.o
-	gcc -o bin/exe parser.tab.c lex.yy.c node.o
+bin/my : parser.tab.c lex.yy.c node.o
+	gcc -o bin/my main.c parser.tab.c lex.yy.c node.o
 
 clean :
-	rm bin/exe parser.tab.c parser.tab.h lex.yy.c node.o
+	rm bin/my parser.tab.c parser.tab.h lex.yy.c node.o

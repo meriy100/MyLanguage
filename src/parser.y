@@ -3,6 +3,13 @@
 #include <stdlib.h>
 #include "node.h"
 #define YYDEBUG 1
+
+static void node_lineinfo(parser_state* p, node* node) {
+  if (!node) return;
+  node->fname = p->fname;
+  node->lineno = p->lineno;
+}
+
 %}
 %union {
   int          int_value;
@@ -64,14 +71,21 @@ yyerror(char const *str)
   return 0;
 }
 
-int main(void)
+int parser(char *file_name)
 {
   extern int yyparse(void);
   extern FILE *yyin;
 
-  yyin = stdin;
+  yyin = fopen(file_name, "r");
+  if(yyin == NULL) {
+      fprintf(stderr, "file be not able to read");
+      exit(-1);
+  }
   if (yyparse()) {
       fprintf(stderr, "Error ! Error ! Error !\n");
+      fclose(yyin);
       exit(1);
   }
+
+  fclose(yyin);
 }
